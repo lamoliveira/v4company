@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V4 - Nosso negócio é vender o seu</title>
+    <style>
+        /* Estilos globais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: black;
+            color: white; /* branco */
+        }
+
+        /* Cabeçalho fixo */
+        header {
+            background-color: #db0e0e; /* Amarelo */
+          
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        /* Espaço para evitar sobreposição do conteúdo com o header */
+        main {
+            padding-top: 80px; /* Altura suficiente para o cabeçalho fixo */
+        }
+
+        /* Barra de navegação */
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000; /* Preto */
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 60px; /* Logo abaixo do cabeçalho */
+            width: 100%;
+            z-index: 999;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            display: block;
+            color: #da0c0c; /* vermelho */
+            
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            background-color: #333; /* Preto mais escuro no hover */
+        }
+
+        /* Seções do site */
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .services {
+            background-color: black;
+            padding: 20px;
+        }
+
+        .services img {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            margin: 10px;
+        }
+
+        /* Estilos do rodapé */
+        footer {
+            background-color: #000; /* Preto */
+            color: #a7a4a4; /* Branco */
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Layout responsivo */
+        @media screen and (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                top: 55px; /* Ajustar para telas menores */
+            }
+
+            .services img {
+                max-width: 150px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            header {
+                font-size: 1.2em;
+            }
+
+            nav ul {
+                top: 50px;
+            }
+
+            .services img {
+                max-width: 120px;
+            }
+        }
+    </style>
+
+    
+
+
+<script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.9.1.min.js"></script>
+
+<script type="text/javascript">
+
+    window.addEventListener("load", mediaSizer);
+    //window.addEventListener("resize", mediaSizer);
+    // Listeners that will react when the page first loads or is resized.
+    // If any of these events take place the mediaSizer() function executes.
+
+    var vizList = [
+
+        "https://public.tableau.com/views/resultadov4company/AcompanhamentodeResultado?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/HUMANRESOURCES-HRExpensesDashboardBrasilv4company/Cockpit?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/shared/9DP8W9RJS?:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/resultadomarcasmobiauto/AcompanhamentodeResultado?:language=pt-BR&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/2-Templatespolipecas/Template?:language=pt-BR&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/3-Exemplopolipecas/DashExemplo?:language=pt-BR&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/Howhastheworldchangedsince1962/WorldIndicators?:language=en-US&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/Ocorrnciasv4company/Reclamaes?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/Visaogeraldasoportunidadesv4company/Visogeraldasoportunidades?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/FacebookAdsDashboard_15566377846980/ExecutiveSummary?:language=en-US&:toolbar=n&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/RepVendasBenchmarkv4company/RepVendasBenchmark?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+
+        "https://public.tableau.com/views/SpendAnalyticsDashboard_16056925975720/Home?:apiInternalVersion=1.131.0&:disableUrlActionsPopups=n&navSrc=Opt&:embed=y&navType=0&:suppressDefaultEditBehavior=n&mobile=n&:toolbar=n&:hideEditButton=y&:hideEditInDesktopButton=n&:jsdebug=n&:apiExternalVersion=3.6.0&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/1-DesigningEffectiveDashboardsPublic/Intro?:language=en-US&:display_count=n&:origin=viz_share_link",
+        "https://public.tableau.com/views/Embedded_Analytics/Introduo?:language=en-US&:display_count=n&:origin=viz_share_link"
+
+
+
+    ];
+    // Array of Tableau Server URLs for dashboard or sheet navigation.
+
+    var viz,
+        vizLen = vizList.length,
+        vizCount = 0,
+        devType,
+        vHideTabs = true,
+        vHideToolbar = true;
+    var options = {
+        device: devType,
+    };
+
+
+    function mediaSizer() {
+        // Determines the correct viz layout according to screen sizes.
+        if (window.matchMedia("(max-width: 450px)").matches) {
+            //alert("I am a phone layout!");
+            devType = 'phone';
+            vWidth = 420;
+            vHeight = 2000;
+            launchViz(0);
+            vHeight = 1200;
+            launchViz(1);
+            vHeight = 2000;
+            //launchViz(3);
+            vHeight = 2000;
+           // launchViz(5);
+            vHeight = 1200;
+
+            launchViz(7);
+            vHeight = 2000;
+            launchViz(8);
+            launchViz(10);
+
+            //options.device = 'phone';
+        } else if (window.matchMedia("(max-width: 980px)").matches) {
+            //alert("I am a tablet layout!");
+            devType = 'tablet';
+            vWidth = 980;
+            //options.device = 'tablet';
+            console.log("devtype: " + devType)
+            console.log("launch0")
+            launchViz(0);
+            console.log("launch1")
+            launchViz(1);
+            console.log("launch2")
+
+          //  launchViz(2);
+            //launchViz(3);
+           // launchViz(4);
+
+           // launchViz(6);
+
+            // Launches the viz again with the new sizing at the current index of vizList.
+        } else {
+            //alert("I am a desktop layout!");
+            devType = 'desktop';
+            vWidth = 1600;
+            vHeight = 800;
+            //options.device = 'desktop';
+            console.log("devtype: " + devType)
+            console.log("launch0")
+            launchViz(0);
+            console.log("launch1")
+            vHeight = 800;
+            launchViz(1);
+            vHeight = 800;
+            console.log("launch2")
+
+            //launchViz(2);
+            console.log("launch3")
+            //launchViz(3);
+           // launchViz(4);
+            vHideToolbar = true;
+            vHideTabs = true;
+          //  launchViz(5);
+            vWidth = 1000;
+           // launchViz(6);
+            vWidth = 1600;
+
+            vHideToolbar = false;
+            vHideTabs = false;
+            vHeight = 800;
+            vWidth = 1600;
+            launchViz(7);
+            vWidth = 1600;
+            launchViz(8);
+           // vHeight = 1000;
+            //launchViz(9);
+            vHeight = 800;
+            launchViz(10);
+            //vHeight = 1000;
+           // launchViz(11);
+            launchViz(12);
+            launchViz(13);
+
+            // Launches the viz again with the new sizing at the current index of vizList.
+        }
+
+    }
+
+
+    function launchViz(vizNav) {
+        // JS object targeting a div in the html document. (vizNav) will pass navigation values to move back and forth across vizList.
+        console.log("vizContainer" + vizNav)
+        console.log("devtype: " + devType)
+        var vizDiv = document.getElementById("vizContainer" + vizNav),
+            // Will embed the visualization on a div with id="VizContainer"
+            options = {
+                device: devType,
+                width: vWidth,
+                height: vHeight,
+                hideTabs: vHideTabs,
+                hideToolbar: vHideToolbar,
+                onFirstInteractive: function () {
+                    listenToMarksSelection();
+                }
+            };
+
+
+        var vizURL = vizList[vizNav];
+        // Dynamic URL returning the string from vizList at index = vizNav (viz to be displayed).
+
+        try {
+            // Initializes the viz from the array with desired options. 
+            viz = new tableau.Viz(vizDiv, vizURL, options);
+            if (!viz) throw 'viz not initialized'
+        }
+        catch (err) {
+            alert(err);
+        }
+        finally {
+            console.log('whatever')
+            console.count('initViz')
+        }
+
+    }
+
+</script>
+
+
+</head>
+<body>
+
+    <header>
+        
+        <!-- <img src="https://cdn.prod.website-files.com/605f2547102fdbbeff1b21e0/60b623fb37130fcd4889bf07_escale-logo.png" width="100" height="50" alt="Logo"> Logo -->
+        <img src="./assets/menu.png"  alt="Logo">
+
+        <!-- <span> O que fazemos | Quem somos | Nosso produto | Cases | Carreiras </span> -->
+    </header>
+
+<!--     <nav>
+        <ul>
+            <li><a href="#">ESCALE - </a></li>
+            <li><a href="#">Quem somos</a></li>
+            <li><a href="#">Nosso produto</a></li>
+            <li><a href="#">Cases</a></li>
+            <li><a href="#">Carreiras</a></li>
+        </ul>
+    </nav> -->
+
+    <main>
+        <section>
+            <h2>Avaliação  Tableau</h2>
+            <p>Todo conteúdo é fictício com objetivo apenas educativo e algumas informações podem ter sido retiradas de seu site.</p>
+        </section>
+
+        <section class="services">
+            <h2>Objetivo</h2>
+            <p>Entender como a plataforma Tableau pode fornecer dashboards embeddados no seu site.</p>
+            <div>
+                <img src="./assets/download.png" alt="Serviço 1">
+              
+            </div>
+        </section>
+<section>
+
+               
+        
+    <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Este é um micro-site criado somente para ilustrar o que seria o Tableau embedded no seu site.
+            </p>
+            <p>Somente alguns exemplos para inspira-los na avaliação do Tableau e para conhecermos melhor o seu
+                use case</p>
+            <p> Todos os dashboards apresentados contem dados ficticios para fins educacionais </p>
+            <div id="vizContainer0"></div>
+        </div>
+    </div>
+
+
+
+
+
+<!--     <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Abaixo um exemplo de dashboard para acompanhamento por marcas.</p>
+            <div id="vizContainer3"></div>
+        </div>
+    </div> -->
+
+    <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Abaixo um dashboard que acompanha despesas de recursos humanos. Voce pode encontrar esse
+                dashboard nos Accelerators Tableau</p>
+            <p>Os aceleradores do Tableau são painéis pré-criados projetados para ajudar você a obter um impulso
+                inicial na análise de dados.</p>
+            <p>Adaptados a setores específicos e aplicativos corporativos, os Aceleradores são criados com dados
+                de amostra que você pode trocar por seus próprios dados,</p>
+            <p> permitindo que você descubra insights com configuração mínima.</p>
+            <div id="vizContainer1"></div>
+        </div>
+    </div>
+<!--     <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Abaixo um exemplo da comunidade Tableau sobre vendas de carros em UK</p>
+
+            <div id="vizContainer2"></div>
+        </div>
+    </div> -->
+
+<!--     <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Abaixo um dashboard de um exemplo de template para que todos os usuários tenham facilidade para
+                criar novos dashs e seguindo os padrões da empresa</p>
+
+            <div id="vizContainer4"></div>
+        </div>
+    </div> -->
+<!--     <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Abaixo um dashboard usando o template ilustrado no dash anterior</p>
+
+            <div id="vizContainer5"></div>
+        </div>
+    </div> -->
+  <!--   <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Abaixo um dashboard mais lúdico disponível no Tableau Public. Voce pode acompanhar a animação
+                clicando no triangulo no canto inferior direito</p>
+            <p>O Tableau Public é uma plataforma gratuita para explorar, criar e compartilhar publicamente
+                visualizações de dados online. </p>
+            <p> Com o maior repositório de visualizações de dados do mundo para aprender, o Tableau Public
+                facilita o desenvolvimento de habilidades de dados.</p>
+
+            <div id="vizContainer6"></div>
+        </div>
+    </div> -->
+    <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Abaixo um dashboard que acompanha a distribuição de chamados de reclamações pelas empresas/tipos de produtos.</p>
+            
+            <div id="vizContainer7"></div>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Avalie suas oportunidades.
+            <p> -- </p>
+            <div id="vizContainer8"></div>
+        </div>
+    </div>
+<!--     <div style="text-align: center;">
+        <div style="display: inline-block;">
+
+            <p> - </p>
+            <p> Abaixo um dashboard para ánalise de facebook ads. Também disponível nos Accelerators Tableau</p>
+            <p>Avalie e melhore o desempenho de suas campanhas de marketing com o Facebook Ads.
+                Identifique as campanhas mais impactantes.</p>
+            <p> Mergulhe fundo na eficiência da campanha em: Reconhecimento, Engajamento, Conversão.</p>
+            <p>Melhorar o retorno sobre o investimento.
+                Audite os resultados da otimização da campanha ao longo do tempo.</p>
+            <div id="vizContainer9"></div>
+        </div>
+    </div> -->
+    <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Abaixo um dashboard para acompanhamento dos Vendedores para Benchmark</p>
+            <p>Permite um benchmark para entenderem como estão performando comparado aos pares ou outros
+                parceiros do mesmo mercado</p>
+            <p> - - </p>
+            <div id="vizContainer10"></div>
+        </div>
+    </div>
+<!--     <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p> - </p>
+            <p> Abaixo um dashboard para acompanhamento de contratos. Também disponível nos Accelerators Tableau
+            </p>
+            <p>Avalie e monitore seu volume de gastos
+                Entenda melhor sua alocação de gastos em categorias de gastos e fornecedores</p>
+            <p>Monitore e melhore os KPIs</p>
+            <div id="vizContainer11"></div>
+        </div>
+    </div> -->
+    <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p>-</p>
+            <p> O dashboard a seguir é um exemplo de webinar que utilizamos no inicio da jornada para criação de
+                cultura de dados. </p>
+            <p>Tem muita informação relevante para que voce possa conhecer um pouco mais sobre a plataforma
+                Tableau e como te ajudamos a construir cultura de dados/>
+            <p>-</p>
+            <div id="vizContainer12"></div>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <div style="display: inline-block;">
+            <p>-</p>
+            <p> O dashboard a seguir é um exemplo de webinar sobre embedded. </p>
+            <p>Tem muita informação relevante para que voce possa conhecer um pouco mais sobre embedded</p>
+            <p>-</p>
+            <div id="vizContainer13"></div>
+        </div>
+    </div>
+</div>
+
+</section>
+        <section>
+            <h2>Sobre Nós</h2>
+            <p>Gestão do projeto e desenvolvimento de estratégias para o crescimento da sua empresa, buscando o maior retorno sobre os valores investidos.</p>
+            <p>Especialistas treinados, desenvolvidos e geridos pela V4 Company</p>
+            <p>Atendimento constante, ágil e eficaz</p>
+            <p> A expertise da maior assessoria de marketing no Brasil na sua empresa</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 V4Company/Tableau - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
